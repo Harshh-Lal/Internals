@@ -31,6 +31,7 @@ class sav_acct : public account {
 public:
     void compute_interest() override {
         balance += balance * rate;
+        cout << "Interest of $ "<<(balance * rate)<<" added to your savings account.\n";
     }
     void withdraw(double amount) override {
         if (amount <= balance) {
@@ -64,9 +65,20 @@ public:
 // Example usage
 int main() {
     sav_acct s;
-    s.initialize("Alice", 1001, "savings", 1000);
+    s.initialize("Harsh", 1432, "savings", 1000);
     s.deposit(500);
     s.compute_interest();
+    s.withdraw(300);
     s.display();
+
+    cout<<"\n";
+
+    cur_acct c;
+    c.initialize("Meet", 1090, "current", 400);
+    c.deposit(200);
+    c.withdraw(100);
+    c.check_min_balance();
+    c.display();
+
     return 0;
 }
